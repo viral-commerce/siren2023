@@ -2,10 +2,11 @@ import { styled } from 'styled-components';
 
 type Props = {
   text: string;
+  onClick?: () => void;
 };
 
-const Button = ({ text }: Props) => {
-  return <Base>{text}</Base>;
+const Button = ({ text, onClick }: Props) => {
+  return <Base onClick={onClick}>{text}</Base>;
 };
 
 export default Button;

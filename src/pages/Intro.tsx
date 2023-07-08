@@ -5,8 +5,12 @@ import kakao from '/kakao.svg';
 import share from '/share.svg';
 import { styled } from 'styled-components';
 import Button from '@/ui/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Intro = () => {
+  const navigate = useNavigate();
+  const onTestPage = () => navigate('/test/1');
+
   return (
     <Layout>
       <Base className="view">
@@ -20,7 +24,7 @@ const Intro = () => {
           <br /> <br />
           당신은 사이렌에 얼마나 진심이었나요?
         </p>
-        <Button text="❤️‍🔥 테스트 한번 가십니까? ❤️‍🔥" />
+        <Button text="❤️‍🔥 테스트 한번 가십니까? ❤️‍🔥" onClick={onTestPage} />
         <p className="count-text">총 00명이 사이렌에 진심이었습니다.</p>
         <img src={background} alt="사이렌 배경" className="bg" />
         <div className="button-row">

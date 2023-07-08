@@ -1,4 +1,5 @@
 import { use100vh } from 'react-div-100vh';
+import { useLocation } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 type Props = {
@@ -7,12 +8,16 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   const height = use100vh();
+  let { pathname } = useLocation();
+
   return (
     <>
       <Background />
       <Base height={height}>
         {children}
-        <p className="footer-text">이미지 출처 ©넷플릭스 사이렌 / 해솔개발</p>
+        <Footer $isWhite={pathname === '/'}>
+          이미지 출처 ©넷플릭스 사이렌 / 해솔개발
+        </Footer>
       </Base>
     </>
   );
@@ -26,7 +31,7 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000000;
+  background: #000;
   top: 0;
   left: 0;
   right: 0;
@@ -46,13 +51,14 @@ const Base = styled.div<{ height: number }>`
       height: 100%;
     }
   }
-  .footer-text {
-    width: 100%;
-    height: 10px;
-    position: absolute;
-    bottom: 20px;
-    color: #fff;
-    font-size: 10px;
-    text-align: center;
-  }
+`;
+
+const Footer = styled.p<{ $isWhite: boolean }>`
+  width: 100%;
+  height: 10px;
+  position: absolute;
+  bottom: 20px;
+  color: ${({ $isWhite }) => ($isWhite ? '#fff' : '#000')};
+  font-size: 10px;
+  text-align: center;
 `;
