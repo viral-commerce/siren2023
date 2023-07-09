@@ -1,16 +1,30 @@
 import { RESULT_MAPPING } from '@/constants';
-import { Layout, ShareButtons } from '@/ui';
+import { Button, Footer, Layout, ShareButtons } from '@/ui';
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import {
+  ScrollRestoration,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { styled } from 'styled-components';
+import { db } from '@/firebase';
+import { update, ref, increment } from 'firebase/database';
+
+const updateCount = () => {
+  update(ref(db, '/visitors'), {
+    count: increment(1),
+  });
+};
 
 const Result = () => {
+  const navigate = useNavigate();
   const { level } = useParams();
   const location = useLocation();
   const [imgSrc, setImgSrc] = useState('');
   const [result, setResult] = useState('');
   const { score } = location?.state;
-  console.log(score);
+
   useEffect(() => {
     if (level === 'addc') setImgSrc('/resultpage/4th.jpeg');
   }, [level]);
@@ -23,14 +37,20 @@ const Result = () => {
     }
   }, [level]);
 
+  useEffect(() => {
+    updateCount();
+  }, []);
+
   return (
     <Layout>
       <Base className="view">
+        <ScrollRestoration />
         <img src={imgSrc} alt="테스트 이미지" />
         <p className="result-text">{result}</p>
         <p className="score-text">최종 점수 {score}/15</p>
-        <ShareButtons />
-        <button className="replay">테스트 다시 하기</button>
+        <Button text="❤️‍🔥 테스트 다시하기 ❤️‍🔥" onClick={() => navigate('/')} />
+        <ShareButtons score={score} />
+        <Footer />
       </Base>
     </Layout>
   );
@@ -62,6 +82,7 @@ const Base = styled.div`
     &.score-text {
       font-size: 16px;
       margin-top: 12px;
+      padding-bottom: 20px;
     }
   }
   .replay {

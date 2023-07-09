@@ -11,4 +11,10 @@ function App() {
   );
 }
 
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
+
 export default App;

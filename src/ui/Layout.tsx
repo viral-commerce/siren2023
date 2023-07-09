@@ -42,6 +42,11 @@ const Base = styled.div<{ height: number }>`
     max-height: 800px;
     margin: 0 auto;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     @media (max-width: 767px) {
       width: 100%;
     }

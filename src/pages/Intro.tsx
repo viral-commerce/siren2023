@@ -1,12 +1,35 @@
-import { Button, Layout, ShareButtons } from '@/ui';
+import { Button, Footer, Layout, ShareButtons } from '@/ui';
 import background from '/siren-bg.svg';
 import logo from '/siren-logo.svg';
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { db } from '@/firebase';
+import { ref, child, get } from 'firebase/database';
 
 const Intro = () => {
   const navigate = useNavigate();
   const onTestPage = () => navigate('/test');
+  const [count, setCount] = useState(0);
+
+  const readOne = () => {
+    const dbRef = ref(db);
+    get(child(dbRef, '/visitors/count'))
+      .then(snapshot => {
+        if (snapshot.exists()) {
+          setCount(snapshot.val());
+        } else {
+          console.log('No data available');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    readOne();
+  }, []);
 
   return (
     <Layout>
@@ -17,14 +40,15 @@ const Intro = () => {
           ※ 주의 ※<br />
           이 테스트는 넷플릭스 공식 컨텐츠가 아니며
           <br />
-          넷플릭스 사이렌 스포일러를 포함하고 있습니다.
+          사이렌 스포일러를 포함하고 있습니다.
           <br /> <br />
           당신은 사이렌에 얼마나 진심이었나요?
         </p>
         <Button text="❤️‍🔥 테스트 한번 가십니까? ❤️‍🔥" onClick={onTestPage} />
-        <p className="count-text">총 00명이 사이렌에 진심이었습니다.</p>
+        <p className="count-text">총 {count}명이 사이렌에 진심이었습니다.</p>
         <img src={background} alt="사이렌 배경" className="bg" />
         <ShareButtons />
+        <Footer />
       </Base>
     </Layout>
   );
@@ -68,17 +92,5 @@ const Base = styled.div`
     display: flex;
     gap: 10px;
     margin-top: 35px;
-  }
-  .share-button {
-    border-radius: 20px;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    color: #fff;
-    font-size: 12px;
-    padding: 5px 8px 5px 10px;
-    margin-top: 0;
   }
 `;

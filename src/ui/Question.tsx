@@ -57,10 +57,18 @@ const Question = ({ id }: Props) => {
         </>
       )}
       {id === 8 && (
-        <p>
-          문제8. 군인팀이 수상가옥에서 챙겨 온 물품을{' '}
-          <span className="underline">모두</span> 고르시오.
-        </p>
+        <>
+          <p>
+            문제8. 군인팀이 수상가옥에서 챙겨 온 물품을{' '}
+            <span className="underline">모두</span> 고르시오.
+          </p>
+          <section>
+            ㉠ 소화기
+            <br />㉡ 막삽
+            <br />㉢ 길리슈트
+            <br />㉣ 튜브
+          </section>
+        </>
       )}
       {id === 9 && <p>문제9. 군인팀과 스턴트팀이 맞춘 암구호로 알맞은 것은?</p>}
       {id === 10 && (
@@ -118,6 +126,7 @@ const Base = styled.div`
   margin: 30px auto 0 auto;
   color: #000;
   font-size: 16px;
+  font-weight: 500;
   .underline {
     text-decoration: underline;
     text-underline-position: under;

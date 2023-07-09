@@ -1,10 +1,11 @@
 import { TEST_MAPPINGS } from '@/constants';
 import { Layout, Button, Question, Progress } from '@/ui';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 const Test = () => {
+  const topRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const [qId, setQId] = useState(1);
   const [imgSrc, setImgSrc] = useState('');
@@ -23,6 +24,7 @@ const Test = () => {
     if (qId < 15) {
       setTestValue([...testValue, optId]);
       setQId(prev => prev + 1);
+      topRef?.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
       setTestValue([...testValue, optId]);
       navigate('/result', { state: { testValue: testValue } });
@@ -32,6 +34,7 @@ const Test = () => {
   return (
     <Layout>
       <Base className="view">
+        <div ref={topRef} />
         <img src={imgSrc} alt="테스트 이미지" />
         <Progress id={qId} />
         <Question id={qId} />

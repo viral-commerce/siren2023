@@ -21,12 +21,4 @@ const Base = styled.button`
   text-align: center;
   font-size: 16px;
   padding: 10px;
-  &:hover {
-    background: #e5e5e5;
-    font-weight: 600;
-  }
-  &:active {
-    background: #e5e5e5;
-    font-weight: 600;
-  }
 `;
