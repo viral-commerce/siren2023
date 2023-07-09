@@ -8,14 +8,6 @@ import {
   useParams,
 } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { db } from '@/firebase';
-import { update, ref, increment } from 'firebase/database';
-
-const updateCount = () => {
-  update(ref(db, '/visitors'), {
-    count: increment(1),
-  });
-};
 
 const Result = () => {
   const navigate = useNavigate();
@@ -37,10 +29,6 @@ const Result = () => {
     }
   }, [level]);
 
-  useEffect(() => {
-    updateCount();
-  }, []);
-
   return (
     <Layout>
       <Base className="view">
@@ -50,7 +38,9 @@ const Result = () => {
         <p className="score-text">최종 점수 {score}/15</p>
         <Button text="❤️‍🔥 테스트 다시하기 ❤️‍🔥" onClick={() => navigate('/')} />
         <ShareButtons score={score} />
-        <Footer />
+        <p className="footer">
+          이미지 출처 ©넷플릭스 사이렌 🔥 2023 해솔 개발
+        </p>
       </Base>
     </Layout>
   );
@@ -61,10 +51,10 @@ export default Result;
 const Base = styled.div`
   background: #000;
   overflow: auto;
-  padding-bottom: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 50px;
   > img {
     width: 100%;
     height: 300px;
@@ -88,5 +78,14 @@ const Base = styled.div`
   .replay {
     margin-top: 30px;
     color: #fff;
+  }
+  .footer {
+    width: 100%;
+    height: 11px;
+    color: #fff;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 500;
+    padding-top: 140px;
   }
 `;

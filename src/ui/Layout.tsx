@@ -38,6 +38,7 @@ const Base = styled.div<{ height: number }>`
   overflow: hidden;
   .view {
     width: 390px;
+    min-height: ${({ height }) => `${height}px`};
     height: ${({ height }) => `${height}px`};
     max-height: 800px;
     margin: 0 auto;

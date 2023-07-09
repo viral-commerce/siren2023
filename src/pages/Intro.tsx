@@ -1,15 +1,18 @@
-import { Button, Footer, Layout, ShareButtons } from '@/ui';
+import { Button, Layout, ShareButtons } from '@/ui';
 import background from '/siren-bg.svg';
 import logo from '/siren-logo.svg';
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { db } from '@/firebase';
-import { ref, child, get } from 'firebase/database';
+import { ref, child, get, update, increment } from 'firebase/database';
 
 const Intro = () => {
   const navigate = useNavigate();
-  const onTestPage = () => navigate('/test');
+  const onTestPage = () => {
+    updateCount();
+    navigate('/test');
+  };
   const [count, setCount] = useState(0);
 
   const readOne = () => {
@@ -25,6 +28,12 @@ const Intro = () => {
       .catch(error => {
         console.error(error);
       });
+  };
+
+  const updateCount = () => {
+    update(ref(db, '/visitors'), {
+      count: increment(1),
+    });
   };
 
   useEffect(() => {
@@ -48,7 +57,9 @@ const Intro = () => {
         <p className="count-text">총 {count}명이 사이렌에 진심이었습니다.</p>
         <img src={background} alt="사이렌 배경" className="bg" />
         <ShareButtons />
-        <Footer />
+        <p className="footer">
+          이미지 출처 ©넷플릭스 사이렌 🔥 2023 해솔 개발
+        </p>
       </Base>
     </Layout>
   );
@@ -92,5 +103,14 @@ const Base = styled.div`
     display: flex;
     gap: 10px;
     margin-top: 35px;
+  }
+  .footer {
+    width: 100%;
+    height: 11px;
+    color: #fff;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 500;
+    padding-top: 130px;
   }
 `;
