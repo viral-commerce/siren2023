@@ -13,18 +13,20 @@ export default Button;
 
 const Base = styled.button`
   width: 300px;
-  height: 45px;
+  min-height: 45px;
   border-radius: 5px;
   border: 1px solid #000;
   background: #fff;
   color: #000;
   text-align: center;
   font-size: 16px;
-  font-weight: 500;
+  padding: 10px;
   &:hover {
     background: #e5e5e5;
+    font-weight: 600;
   }
   &:active {
     background: #e5e5e5;
+    font-weight: 600;
   }
 `;

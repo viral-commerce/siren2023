@@ -1,15 +1,14 @@
-import { Layout } from '@/ui';
+import { Button, Layout } from '@/ui';
 import background from '/siren-bg.svg';
 import logo from '/siren-logo.svg';
 import kakao from '/kakao.svg';
 import share from '/share.svg';
 import { styled } from 'styled-components';
-import Button from '@/ui/Button';
 import { useNavigate } from 'react-router-dom';
 
 const Intro = () => {
   const navigate = useNavigate();
-  const onTestPage = () => navigate('/test/1');
+  const onTestPage = () => navigate('/test');
 
   return (
     <Layout>
@@ -45,11 +44,11 @@ const Intro = () => {
 export default Intro;
 
 const Base = styled.div`
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  overflow-x: hidden;
   > p {
     color: #fff;
     text-align: center;
