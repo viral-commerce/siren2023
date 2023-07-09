@@ -38,9 +38,7 @@ const Result = () => {
         <p className="score-text">최종 점수 {score}/15</p>
         <Button text="❤️‍🔥 테스트 다시하기 ❤️‍🔥" onClick={() => navigate('/')} />
         <ShareButtons score={score} />
-        <p className="footer">
-          이미지 출처 ©넷플릭스 사이렌 🔥 2023 해솔 개발
-        </p>
+        <p className="footer">이미지 출처 ©넷플릭스 사이렌 🔥 2023 NOMORE</p>
       </Base>
     </Layout>
   );

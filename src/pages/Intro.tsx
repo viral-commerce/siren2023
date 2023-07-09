@@ -57,9 +57,7 @@ const Intro = () => {
         <p className="count-text">총 {count}명이 사이렌에 진심이었습니다.</p>
         <img src={background} alt="사이렌 배경" className="bg" />
         <ShareButtons />
-        <p className="footer">
-          이미지 출처 ©넷플릭스 사이렌 🔥 2023 해솔 개발
-        </p>
+        <p className="footer">이미지 출처 ©넷플릭스 사이렌 🔥 2023 NOMORE</p>
       </Base>
     </Layout>
   );
