@@ -18,10 +18,6 @@ const Result = () => {
   const { score } = location?.state;
 
   useEffect(() => {
-    if (level === 'addc') setImgSrc('/resultpage/4th.jpeg');
-  }, [level]);
-
-  useEffect(() => {
     if (RESULT_MAPPING.hasOwnProperty(level)) {
       const { img, resultText } = RESULT_MAPPING[level];
       setImgSrc(img);

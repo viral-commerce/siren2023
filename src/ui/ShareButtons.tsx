@@ -21,9 +21,7 @@ const ShareButtons = ({ score }: Props) => {
 
   const copyClipBoard = async () => {
     try {
-      await navigator.clipboard.writeText(
-        'https://siren2023.netlify.app' + pathname
-      );
+      await navigator.clipboard.writeText('https://siren2023.netlify.app');
       alert('링크가 복사되었습니다.');
     } catch (error) {
       console.log(error);
@@ -47,16 +45,16 @@ const ShareButtons = ({ score }: Props) => {
           imageUrl:
             'https://t1.daumcdn.net/news/202306/07/newsen/20230607111634147ntkc.jpg',
           link: {
-            mobileWebUrl: 'https://siren2023.netlify.app' + pathname,
-            webUrl: 'https://siren2023.netlify.app' + pathname,
+            mobileWebUrl: 'https://siren2023.netlify.app',
+            webUrl: 'https://siren2023.netlify.app',
           },
         },
         buttons: [
           {
             title: '웹으로 보기',
             link: {
-              mobileWebUrl: 'https://siren2023.netlify.app' + pathname,
-              webUrl: 'https://siren2023.netlify.app' + pathname,
+              mobileWebUrl: 'https://siren2023.netlify.app',
+              webUrl: 'https://siren2023.netlify.app',
             },
           },
         ],
