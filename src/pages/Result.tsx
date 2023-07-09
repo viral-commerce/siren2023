@@ -1,5 +1,5 @@
 import { RESULT_MAPPING } from '@/constants';
-import { Button, Footer, Layout, ShareButtons } from '@/ui';
+import { Button, Layout, ShareButtons } from '@/ui';
 import { useEffect, useState } from 'react';
 import {
   ScrollRestoration,
