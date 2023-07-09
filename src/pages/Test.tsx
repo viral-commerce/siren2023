@@ -10,6 +10,7 @@ const Test = () => {
   const [imgSrc, setImgSrc] = useState('');
   const [optList, setOptList] = useState<{ id: number; opt: string }[]>([]);
   const [testValue, setTestValue] = useState([]);
+
   useEffect(() => {
     if (TEST_MAPPINGS.hasOwnProperty(qId)) {
       const { img, optionList } = TEST_MAPPINGS[qId];

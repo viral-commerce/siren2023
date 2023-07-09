@@ -1,8 +1,6 @@
-import { Button, Layout } from '@/ui';
+import { Button, Layout, ShareButtons } from '@/ui';
 import background from '/siren-bg.svg';
 import logo from '/siren-logo.svg';
-import kakao from '/kakao.svg';
-import share from '/share.svg';
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
@@ -26,16 +24,7 @@ const Intro = () => {
         <Button text="❤️‍🔥 테스트 한번 가십니까? ❤️‍🔥" onClick={onTestPage} />
         <p className="count-text">총 00명이 사이렌에 진심이었습니다.</p>
         <img src={background} alt="사이렌 배경" className="bg" />
-        <div className="button-row">
-          <button className="share-button">
-            카카오 공유하기
-            <img src={kakao} alt="카카오 공유하기" />
-          </button>
-          <button className="share-button">
-            링크 공유하기
-            <img src={share} alt="링크 공유하기" />
-          </button>
-        </div>
+        <ShareButtons />
       </Base>
     </Layout>
   );

@@ -3,14 +3,15 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { IntroPage, ResultPage, TestPage } from '@/pages';
+import { CalcPage, IntroPage, ResultPage, TestPage } from '@/pages';
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<IntroPage />} />
       <Route path="/test" element={<TestPage />} />
-      <Route path="/result" element={<ResultPage />} />
+      <Route path="/result" element={<CalcPage />} />
+      <Route path="/result/:level" element={<ResultPage />} />
     </>
   )
 );

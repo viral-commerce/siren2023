@@ -159,3 +159,29 @@ export const TEST_MAPPINGS: Mappings = {
 };
 
 export const ANSWERS = [4, 2, 5, 2, 4, 1, 4, 1, 3, 1, 3, 5, 5, 2, 1];
+
+type ResultMappings = {
+  [key: string]: {
+    img: string;
+    resultText: string;
+  };
+};
+
+export const RESULT_MAPPING: ResultMappings = {
+  addc: {
+    img: '/resultpage/4th.jpeg',
+    resultText: '정주행 한번 가십니까?',
+  },
+  bdhc: {
+    img: '/resultpage/3rd.jpeg',
+    resultText: '당신보다 센 사람이 얼마나 있는지 궁금해서 오셨군요',
+  },
+  fhbd: {
+    img: '/resultpage/2nd.jpeg',
+    resultText: '저 여자만 잡으면 내가 일등인데',
+  },
+  duiu: {
+    img: '/resultpage/1st.jpeg',
+    resultText: '이제 그만 불의 섬을 놓아줘요',
+  },
+};
