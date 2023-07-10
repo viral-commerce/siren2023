@@ -92,8 +92,8 @@ const Question = ({ id }: Props) => {
       {id === 13 && (
         <p>
           문제13. 소방팀은 [목마른자가 우물을 판다]에서 승리해 사이렌 통제권을
-          얻게 된다. <span className="underline">통제권을 얻은 날</span>에
-          소방팀이 운동선수팀과 합의한 기지전 시작 시간은?
+          얻게 된다. 소방팀이 <span className="underline">제일 처음</span>{' '}
+          사이렌을 울린 시간은?
         </p>
       )}
       {id === 14 && (
