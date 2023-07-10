@@ -64,10 +64,26 @@ const ShareButtons = ({ score }: Props) => {
     }
   };
 
+  const shareByTwitter = () => {
+    let sendText =
+      pathname === '/'
+        ? '당신은 사이렌에 얼마나 진심이었나요?'
+        : `사이렌에 진심이었던 당신의 점수는 ${Math.round(
+            (Number(score) / 15) * 100
+          )}점입니다.`;
+    let sendUrl = 'siren2023.netlify.app'; // 전달할 URL
+    window.open(
+      'https://twitter.com/intent/tweet?text=' + sendText + '&url=' + sendUrl
+    );
+  };
+
   return (
     <Base>
       <button className="share-button" onClick={shareByKakao}>
         카카오 공유하기
+      </button>
+      <button className="share-button" onClick={shareByTwitter}>
+        트위터 공유하기
       </button>
       <button className="share-button" onClick={copyClipBoard}>
         링크 공유하기
