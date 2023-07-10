@@ -31,7 +31,10 @@ const Result = () => {
         <ScrollRestoration />
         <img src={imgSrc} alt="테스트 이미지" />
         <p className="result-text">{result}</p>
-        <p className="score-text">최종 점수 {score}/15</p>
+        <p className="score-text">
+          최종 점수 {Math.round((score / 15) * 100)}점<br />
+          (15문제 중 {score}개 정답)
+        </p>
         <Button text="❤️‍🔥 테스트 다시하기 ❤️‍🔥" onClick={() => navigate('/')} />
         <ShareButtons score={score} />
         <p className="footer">이미지 출처 ©넷플릭스 사이렌 🔥 2023 NOMORE</p>

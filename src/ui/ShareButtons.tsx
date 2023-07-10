@@ -41,7 +41,9 @@ const ShareButtons = ({ score }: Props) => {
           description:
             pathname === '/'
               ? '당신은 사이렌에 얼마나 진심이었나요?'
-              : `사이렌에 진심이었던 당신의 점수는 ${score}점입니다.`,
+              : `사이렌에 진심이었던 당신의 점수는 ${Math.round(
+                  (Number(score) / 15) * 100
+                )}점입니다.`,
           imageUrl:
             'https://github.com/viral-commerce/siren2023/assets/105091138/47907a8c-3be6-4955-9079-42326746dcfd',
           link: {
