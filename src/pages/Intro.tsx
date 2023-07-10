@@ -109,6 +109,6 @@ const Base = styled.div`
     text-align: center;
     font-size: 9px;
     font-weight: 500;
-    padding-top: 130px;
+    padding-top: 110px;
   }
 `;
